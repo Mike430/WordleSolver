@@ -5,7 +5,7 @@
 
 //credit for the words.txt file to https://github.com/dwyl/english-words
 
-std::string gIllegalCharactersString = "|\\,./?;:'@#~-_!\"£$%^&*()";
+std::string gIllegalCharactersString = "|\\,./?;:'@#~-_!\"£$%^&*()1234567890";
 std::string gMisplacedCharacters;
 std::string gConfirmedCharacters;
 int gMaxWordLength = 0;
@@ -90,6 +90,8 @@ int main()
     std::string line;
     std::ifstream wordListFile("words.txt");
 
+    unsigned int FoundWordCount = 0;
+
     if(wordListFile)
     {
         while(getline(wordListFile, line))
@@ -97,9 +99,11 @@ int main()
             if(IsWordLegal(line))
             {
                 std::cout << line << std::endl;
+                FoundWordCount += 1;
             }
         }
     }
 
+    printf("\n\nValid Words Found: %d\n\n", FoundWordCount);
     return 0;
 }
